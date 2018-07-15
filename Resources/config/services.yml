@@ -1,0 +1,30 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+    Bkstg\NotificationBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity,Repository,Tests}'
+
+    # Controller services.
+    Bkstg\NotificationBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags:
+            - { name: controller.service_arguments }
+
+    # Block services.
+    Bkstg\NotificationBundle\Block\:
+        resource: '../../Block'
+        public: true
+        arguments:
+            - null
+            - '@sonata.templating'
+        tags:
+            - { name: sonata.block }
+
+    # Event listener
+    Bkstg\NotificationBundle\EventListener\Notifications:
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.bkstg.timeline.notifications, method: onBlock }

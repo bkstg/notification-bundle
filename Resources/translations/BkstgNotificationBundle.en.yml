@@ -1,0 +1,12 @@
+timeline:
+    header: 'Timeline'
+    your_header: 'My timeline'
+    entry:
+        read_more: 'Read more'
+    you: 'you'
+    notifications: 'Notifications'
+    goto: 'Go to timeline'
+notifications:
+    cleared: 'Cleared all notifications.'
+    empty: 'No new notifications'
+    clear_all: 'Clear all notifications'

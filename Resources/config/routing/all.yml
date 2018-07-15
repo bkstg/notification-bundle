@@ -1,0 +1,15 @@
+bkstg_notification_redirect:
+    path: /{id}/redirect
+    methods: [GET]
+    defaults:
+        _controller: Bkstg\NotificationBundle\Controller::redirectAction
+bkstg_notification_mark_read:
+    path: /{id}/read
+    methods: [GET]
+    defaults:
+        _controller: Bkstg\NotificationBundle\Controller::markReadAction
+bkstg_notification_mark_all_read:
+    path: /read-all
+    methods: [GET]
+    defaults:
+        _controller: Bkstg\NotificationBundle\Controller::markAllReadAction

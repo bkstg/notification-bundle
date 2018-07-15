@@ -1,0 +1,27 @@
+{
+    "name": "bkstg/notification-bundle",
+    "description": "Provides the backstage notifications.",
+    "type": "symfony-bundle",
+    "require": {
+        "symfony/framework-bundle": "^3.3||^4.0",
+        "bkstg/timeline-bundle": "2.0.x-dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luke Bainbridge",
+            "email": "luke.bainbridge@gmail.com"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": { "Bkstg\\NotificationBundle\\": "" }
+    },
+    "suggest": {
+        "symfony/swiftmailer-bundle": "Allows sending email notifications."
+    }
+}
