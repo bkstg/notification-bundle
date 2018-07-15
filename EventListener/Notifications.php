@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Bkstg\NoticationBundle\EventListener;
+namespace Bkstg\NotificationBundle\EventListener;
 
-use Bkstg\NoticationBundle\Block\NotificationsBlock;
+use Bkstg\NotificationBundle\Block\NotificationsBlock;
 use Sonata\BlockBundle\Event\BlockEvent;
 use Sonata\BlockBundle\Model\Block;
 

@@ -15,11 +15,11 @@ use Bkstg\CoreBundle\User\UserInterface;
 use Bkstg\NotificationBundle\Event\NotificationEntryEvent;
 use Spy\Timeline\Driver\TimelineManagerInterface;
 use Spy\Timeline\Model\ActionInterface;
-use Spy\Timeline\Notification\Unread\UnreadNotificationManager as BaseUnreadNotificationManager;
+use Spy\Timeline\Notification\Unread\UnreadNotificationManager;
 use Spy\Timeline\Spread\Entry\EntryCollection;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-abstract class UnreadNotificationManager extends BaseUnreadNotificationManager
+class ApplicationNotificationManager extends UnreadNotificationManager
 {
     protected $dispatcher;
     protected $timeline_manager;

@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Bkstg\NotificationBundle\Controller;
 
 use Bkstg\CoreBundle\Controller\Controller;
-use Bkstg\NotificationBundle\Notifier\UnreadNotificationManager;
+use Bkstg\NotificationBundle\Notifier\ApplicationNotificationManager;
 use Bkstg\TimelineBundle\BkstgTimelineBundle;
 use Bkstg\TimelineBundle\Entity\Action;
 use Spy\Timeline\Driver\ActionManagerInterface;
@@ -29,7 +29,7 @@ class NotificationController extends Controller
         int $id,
         TokenStorageInterface $token_storage,
         ActionManagerInterface $action_manager,
-        UnreadNotificationManager $notifier,
+        ApplicationNotificationManager $notifier,
         Request $request
     ): Response {
         // Get the action.
@@ -49,7 +49,7 @@ class NotificationController extends Controller
         int $id,
         TokenStorageInterface $token_storage,
         ActionManagerInterface $action_manager,
-        UnreadNotificationManager $notifier,
+        ApplicationNotificationManager $notifier,
         Request $request
     ): Response {
         $user = $token_storage->getToken()->getUser();
@@ -62,7 +62,7 @@ class NotificationController extends Controller
     public function markAllReadAction(
         TokenStorageInterface $token_storage,
         ActionManagerInterface $action_manager,
-        UnreadNotificationManager $notifier,
+        ApplicationNotificationManager $notifier,
         Request $request
     ): Response {
         $user = $token_storage->getToken()->getUser();

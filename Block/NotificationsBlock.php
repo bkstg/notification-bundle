@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Bkstg\TimelineBundle\Block;
+namespace Bkstg\NotificationBundle\Block;
 
-use Bkstg\NotificationBundle\Notifier\UnreadNotificationManager;
+use Bkstg\NotificationBundle\Notifier\ApplicationNotificationManager;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Sonata\BlockBundle\Templating\TwigEngine;
@@ -34,7 +34,7 @@ class NotificationsBlock extends AbstractBlockService
         ActionManagerInterface $action_manager,
         TimelineManagerInterface $timeline_manager,
         TokenStorageInterface $token_storage,
-        UnreadNotificationManager $notifier
+        ApplicationNotificationManager $notifier
     ) {
         $this->action_manager = $action_manager;
         $this->timeline_manager = $timeline_manager;
@@ -64,7 +64,7 @@ class NotificationsBlock extends AbstractBlockService
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'template' => '@BkstgTimeline/Block/_notifications.html.twig',
+            'template' => '@BkstgNotification/Block/_notifications.html.twig',
         ]);
     }
 }
