@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the BkstgTimelineBundle package.
+ * This file is part of the BkstgNotificationBundle package.
  * (c) Luke Bainbridge <http://www.lukebainbridge.ca/>
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,8 +15,8 @@ use Bkstg\CoreBundle\Controller\Controller;
 use Bkstg\NotificationBundle\Notifier\ApplicationNotificationManager;
 use Bkstg\TimelineBundle\BkstgTimelineBundle;
 use Bkstg\TimelineBundle\Entity\Action;
+use Bkstg\TimelineBundle\Generator\LinkGeneratorInterface;
 use Spy\Timeline\Driver\ActionManagerInterface;
-use Spy\Timeline\Driver\TimelineManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +30,7 @@ class NotificationController extends Controller
         TokenStorageInterface $token_storage,
         ActionManagerInterface $action_manager,
         ApplicationNotificationManager $notifier,
+        LinkGeneratorInterface $generator,
         Request $request
     ): Response {
         // Get the action.
@@ -42,7 +43,7 @@ class NotificationController extends Controller
         $subject = $action_manager->findOrCreateComponent($user);
         $notifier->markAsReadAction($subject, $id);
 
-        return new RedirectResponse($action->getLink());
+        return new RedirectResponse($generator->generate($action));
     }
 
     public function markReadAction(
