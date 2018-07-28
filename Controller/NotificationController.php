@@ -17,6 +17,8 @@ use Bkstg\TimelineBundle\BkstgTimelineBundle;
 use Bkstg\TimelineBundle\Entity\Action;
 use Bkstg\TimelineBundle\Generator\LinkGeneratorInterface;
 use Spy\Timeline\Driver\ActionManagerInterface;
+use Spy\Timeline\Filter\DataHydrator;
+use Spy\Timeline\ResolveComponent\ValueObject\ResolveComponentModelIdentifier;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,6 +33,7 @@ class NotificationController extends Controller
         ActionManagerInterface $action_manager,
         ApplicationNotificationManager $notifier,
         LinkGeneratorInterface $generator,
+        DataHydrator $hydrator,
         Request $request
     ): Response {
         // Get the action.
@@ -39,11 +42,14 @@ class NotificationController extends Controller
             throw new NotFoundHttpException();
         }
 
+        // Hydrate the components.
+        $hydrator->filter([$action]);
+
         $user = $token_storage->getToken()->getUser();
         $subject = $action_manager->findOrCreateComponent($user);
         $notifier->markAsReadAction($subject, $id);
 
-        return new RedirectResponse($generator->generate($action));
+        return new RedirectResponse($generator->generateLink($action));
     }
 
     public function markReadAction(

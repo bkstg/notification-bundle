@@ -2,5 +2,5 @@
 
 {{ timeline_render(action, 'Timeline/'~action.verb~'.html.twig')|striptags }}
 <a href="{{ url('bkstg_notification_redirect', {'id': action.id}) }}">
-  {{ 'notification.read_more'|trans }}
+  {{ 'notifications.read_more'|trans }}
 </a>

@@ -10,3 +10,4 @@ notifications:
     cleared: 'Cleared all notifications.'
     empty: 'No new notifications'
     clear_all: 'Clear all notifications'
+    read_more: 'read more'
