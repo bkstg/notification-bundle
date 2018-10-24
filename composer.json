@@ -23,5 +23,10 @@
     },
     "suggest": {
         "symfony/swiftmailer-bundle": "Allows sending email notifications."
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "phpunit/phpunit": "^7.4"
     }
 }
