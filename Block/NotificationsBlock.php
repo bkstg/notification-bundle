@@ -56,8 +56,9 @@ class NotificationsBlock extends AbstractBlockService
     /**
      * Execute the block.
      *
-     * @param  BlockContextInterface $context  The block context.
-     * @param  Response              $response The response so far.
+     * @param BlockContextInterface $context  The block context.
+     * @param Response              $response The response so far.
+     *
      * @return string
      */
     public function execute(BlockContextInterface $context, Response $response = null)

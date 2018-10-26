@@ -18,7 +18,6 @@ use Bkstg\TimelineBundle\Entity\Action;
 use Bkstg\TimelineBundle\Generator\LinkGeneratorInterface;
 use Spy\Timeline\Driver\ActionManagerInterface;
 use Spy\Timeline\Filter\DataHydrator;
-use Spy\Timeline\ResolveComponent\ValueObject\ResolveComponentModelIdentifier;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,13 +29,13 @@ class NotificationController extends Controller
     /**
      * Redirect to the action link.
      *
-     * @param  int                            $id             The action id.
-     * @param  TokenStorageInterface          $token_storage  The token storage service.
-     * @param  ActionManagerInterface         $action_manager The action manager service.
-     * @param  ApplicationNotificationManager $notifier       The notification manager service.
-     * @param  LinkGeneratorInterface         $generator      The link generator service.
-     * @param  DataHydrator                   $hydrator       The data hydrator service.
-     * @param  Request                        $request        The incoming request.
+     * @param int                            $id             The action id.
+     * @param TokenStorageInterface          $token_storage  The token storage service.
+     * @param ActionManagerInterface         $action_manager The action manager service.
+     * @param ApplicationNotificationManager $notifier       The notification manager service.
+     * @param LinkGeneratorInterface         $generator      The link generator service.
+     * @param DataHydrator                   $hydrator       The data hydrator service.
+     * @param Request                        $request        The incoming request.
      *
      * @return Response
      */
@@ -68,11 +67,11 @@ class NotificationController extends Controller
     /**
      * Mark an action as read.
      *
-     * @param  int                            $id             The id of the action.
-     * @param  TokenStorageInterface          $token_storage  The token storage service.
-     * @param  ActionManagerInterface         $action_manager The action manager service.
-     * @param  ApplicationNotificationManager $notifier       The notifier service.
-     * @param  Request                        $request        The incoming request.
+     * @param int                            $id             The id of the action.
+     * @param TokenStorageInterface          $token_storage  The token storage service.
+     * @param ActionManagerInterface         $action_manager The action manager service.
+     * @param ApplicationNotificationManager $notifier       The notifier service.
+     * @param Request                        $request        The incoming request.
      *
      * @return Response
      */
@@ -93,10 +92,10 @@ class NotificationController extends Controller
     /**
      * Mark all actions as read for the current user.
      *
-     * @param  TokenStorageInterface          $token_storage  The token storage service.
-     * @param  ActionManagerInterface         $action_manager The action manager service.
-     * @param  ApplicationNotificationManager $notifier       The notifier service.
-     * @param  Request                        $request        The incoming request.
+     * @param TokenStorageInterface          $token_storage  The token storage service.
+     * @param ActionManagerInterface         $action_manager The action manager service.
+     * @param ApplicationNotificationManager $notifier       The notifier service.
+     * @param Request                        $request        The incoming request.
      *
      * @return Response
      */
