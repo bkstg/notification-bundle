@@ -17,6 +17,13 @@ use Sonata\BlockBundle\Model\Block;
 
 class Notifications
 {
+    /**
+     * Creates the notifications block.
+     *
+     * @param BlockEvent $event The incoming block event.
+     *
+     * @return void
+     */
     public function onBlock(BlockEvent $event): void
     {
         $block = new Block();

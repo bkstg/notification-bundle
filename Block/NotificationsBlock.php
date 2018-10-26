@@ -28,6 +28,16 @@ class NotificationsBlock extends AbstractBlockService
     private $token_storage;
     private $notifier;
 
+    /**
+     * Create a new notifications block.
+     *
+     * @param string                         $name             The name of the block.
+     * @param TwigEngine                     $templating       The twig service.
+     * @param ActionManagerInterface         $action_manager   The action manager service.
+     * @param TimelineManagerInterface       $timeline_manager The timeline manager service.
+     * @param TokenStorageInterface          $token_storage    The token storage service.
+     * @param ApplicationNotificationManager $notifier         The notifier service.
+     */
     public function __construct(
         $name,
         TwigEngine $templating,
@@ -43,6 +53,13 @@ class NotificationsBlock extends AbstractBlockService
         parent::__construct($name, $templating);
     }
 
+    /**
+     * Execute the block.
+     *
+     * @param  BlockContextInterface $context  The block context.
+     * @param  Response              $response The response so far.
+     * @return string
+     */
     public function execute(BlockContextInterface $context, Response $response = null)
     {
         $user = $this->token_storage->getToken()->getUser();
@@ -61,6 +78,13 @@ class NotificationsBlock extends AbstractBlockService
         ], $response);
     }
 
+    /**
+     * Configure the settings for this block.
+     *
+     * @param OptionsResolver $resolver The options resolver services.
+     *
+     * @return void
+     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

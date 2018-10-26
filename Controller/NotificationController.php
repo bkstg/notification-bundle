@@ -27,6 +27,19 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class NotificationController extends Controller
 {
+    /**
+     * Redirect to the action link.
+     *
+     * @param  int                            $id             The action id.
+     * @param  TokenStorageInterface          $token_storage  The token storage service.
+     * @param  ActionManagerInterface         $action_manager The action manager service.
+     * @param  ApplicationNotificationManager $notifier       The notification manager service.
+     * @param  LinkGeneratorInterface         $generator      The link generator service.
+     * @param  DataHydrator                   $hydrator       The data hydrator service.
+     * @param  Request                        $request        The incoming request.
+     *
+     * @return Response
+     */
     public function redirectAction(
         int $id,
         TokenStorageInterface $token_storage,
@@ -52,6 +65,17 @@ class NotificationController extends Controller
         return new RedirectResponse($generator->generateLink($action));
     }
 
+    /**
+     * Mark an action as read.
+     *
+     * @param  int                            $id             The id of the action.
+     * @param  TokenStorageInterface          $token_storage  The token storage service.
+     * @param  ActionManagerInterface         $action_manager The action manager service.
+     * @param  ApplicationNotificationManager $notifier       The notifier service.
+     * @param  Request                        $request        The incoming request.
+     *
+     * @return Response
+     */
     public function markReadAction(
         int $id,
         TokenStorageInterface $token_storage,
@@ -66,6 +90,16 @@ class NotificationController extends Controller
         return new RedirectResponse($request->server->get('HTTP_REFERER'));
     }
 
+    /**
+     * Mark all actions as read for the current user.
+     *
+     * @param  TokenStorageInterface          $token_storage  The token storage service.
+     * @param  ActionManagerInterface         $action_manager The action manager service.
+     * @param  ApplicationNotificationManager $notifier       The notifier service.
+     * @param  Request                        $request        The incoming request.
+     *
+     * @return Response
+     */
     public function markAllReadAction(
         TokenStorageInterface $token_storage,
         ActionManagerInterface $action_manager,

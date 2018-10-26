@@ -24,6 +24,12 @@ class ApplicationNotificationManager extends UnreadNotificationManager
     protected $dispatcher;
     protected $timeline_manager;
 
+    /**
+     * Create a new notification manager.
+     *
+     * @param EventDispatcherInterface $dispatcher       The event dispatcher service.
+     * @param TimelineManagerInterface $timeline_manager The timeline manager service.
+     */
     public function __construct(
         EventDispatcherInterface $dispatcher,
         TimelineManagerInterface $timeline_manager
@@ -34,6 +40,11 @@ class ApplicationNotificationManager extends UnreadNotificationManager
 
     /**
      * {@inheritdoc}
+     *
+     * @param ActionInterface $action           The action.
+     * @param EntryCollection $entry_collection The entry collection.
+     *
+     * @return void
      */
     public function notify(ActionInterface $action, EntryCollection $entry_collection): void
     {
